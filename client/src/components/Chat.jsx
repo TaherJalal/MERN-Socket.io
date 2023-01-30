@@ -35,7 +35,20 @@ function Chat({socket , room , userName}) {
 
         <div className='chat-mid'>
             {messageList.map((messageContent) => {
-                return <p>{messageContent.currentMessage}</p>
+                return (
+                <div className='message' id={userName == messageContent.user ? 'you' : 'other'}> 
+                
+                    <div> 
+
+                        <div className='message-content'><p>{messageContent.currentMessage}</p></div>
+                        <div className='message-meta'>
+                            <p>{messageContent.user}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+                )
             })}
         </div>
 

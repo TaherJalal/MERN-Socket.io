@@ -3,13 +3,17 @@ const mongoose = require('mongoose')
 const app = express()
 const cors = require('cors');
 const http = require('http').Server(app)
+
+
+app.use(cors())
 app.use(express.json())
 
 const indexRoutes = require('./routes/index')
+const authRoutes = require('./routes/auth')
 
 app.use(indexRoutes)
+app.use(authRoutes)
 
-app.use(cors())
 
 
 const socketIO = require('socket.io')(http, {
@@ -41,7 +45,7 @@ socketIO.on('connection' , (socket) => {
 mongoose.set('strictQuery' , 'false')
 
 
-mongoose.connect('mongodb://localhost:27017' ,
+mongoose.connect('mongodb://127.0.0.1:27017' ,
 { useNewUrlParser: true, useUnifiedTopology: true},
 () => console.log("connected to mongodb"))
 
