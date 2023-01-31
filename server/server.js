@@ -13,7 +13,7 @@ const authRoutes = require('./routes/auth')
 const chatRoutes = require('./routes/chat')
 
 app.use(indexRoutes)
-app.use(authRoutes)
+app.use("/",authRoutes)
 app.use(chatRoutes)
 
 
@@ -47,7 +47,7 @@ mongoose.set('strictQuery' , 'false')
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/socket' ,
-{ useNewUrlParser: true, useUnifiedTopology: true},
+{ useNewUrlParser: true, useUnifiedTopology: true },
 () => console.log("connected to mongodb"))
 
 

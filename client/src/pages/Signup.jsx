@@ -1,27 +1,24 @@
 import React from 'react'
-import {useState} from 'react'
+import {useState , useEffect} from 'react'
 import axios from 'axios'
+import image from '../images/176.png'
 
-function Signup() {
-    const [firstName , setFirstName] = useState('')
-    const [lastName , setLastName] = useState('')
-    const [emailAddress ,setEmailAddress] = useState('')
-    const [password , setPassword] = useState('')
 
-    const postData = (e) => {
-        axios.post('/signup' , {
-            firstName,
-            lastName,
-            emailAddress,
-            password
-        })
-        .then((res) => {
-            console.log(res)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+function Signup(props) {
+ const jwt_decode = require('jwt-decode')
+    const [newUser, setNewUser] = useState({});
+
+    const changeHandler = (e) => {
+        const user = {...newUser};
+        user[e.target.name] = e.target.value;
+        console.log(user);
+        setNewUser(user);
     }
+
+    const registerHandler = () => {
+        props.register(newUser)
+    }
+
 
   return (
     <div className='outer-outer-div'>
@@ -32,29 +29,29 @@ function Signup() {
 
             <div>
                 <label>First Name</label>
-                <input type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} />
+                <input type="text" name="firstName" onChange={changeHandler} />
             </div>
           
             <div>
                 <label>Last Name</label>
-                <input type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} />
+                <input type="text" name="lastName" onChange={changeHandler} />
             </div>
 
             <div>
                 <label>Email Address</label>
-                <input type="text" name="emailAddress" onChange={(e) => setEmailAddress(e.target.value)}/>
+                <input type="text" name="emailAddress" onChange={changeHandler}/>
             </div>
 
             <div>
                 <label>Password</label>
-                <input type="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
+                <input type="password" name="password" onChange={changeHandler}/>
             </div>
 
             
         </form>
-    </div><button type="submit" onClick={postData}>Create Account</button>
+    </div><button type="submit" onClick={registerHandler}>Create Account</button>
     </div>
-    <img src="/src/images/176.png" alt="" />
+    <img src={image} alt="" />
     </div>
   )
 }

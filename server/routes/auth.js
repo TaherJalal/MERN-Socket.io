@@ -3,7 +3,9 @@ const router = express.Router()
 
 const userCntrl = require('../controller/auth')
 
-router.get('/signup' , userCntrl.test_get)
-router.post('/signup' , userCntrl.user_post)
+router.use(express.json());
+
+router.get('auth/signup' , userCntrl.auth_signup_get)
+router.post('/auth/signup'  , userCntrl.auth_signup_post)
 
 module.exports = router
