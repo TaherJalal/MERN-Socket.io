@@ -46,6 +46,9 @@ function Chat({socket , room , userName}) {
         })
     }, [socket])
 
+
+    console.log(messageList)
+
   return (
     <div>
         <h1>chat</h1>
@@ -54,18 +57,20 @@ function Chat({socket , room , userName}) {
         </div>
 
         <div className='chat-mid'>
-            {messageList.map((messageContent) => {
+
+            {messageList.map((messageContent, index) => {
+                console.log(messageContent)
+                console.log(messageContent.currentMessage.message)
+                console.log(index)
                 return (
-                <div className='message'> 
-                
-                    <div> 
-
-                        <div className='message-content'><p>{messageContent.currentMessage}</p></div>
-                    </div>
-
+                <div className='message' key={index}> 
+                        <div className='message-content'>
+                            {messageContent.currentMessage.message}
+                        </div>
                 </div>
                 )
             })}
+
         </div>
 
         <div className='chat-bottom'>
