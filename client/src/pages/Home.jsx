@@ -8,7 +8,8 @@ import Chat from '../components/Chat'
 import Signup from './Signup'
 import ChatPage from './ChatPage'
 import jwt_decode from 'jwt-decode'
-
+import Signin from './Signin'
+import User from '../pages/User'
 const socket = socketIO.connect('http://localhost:8000')
 
 function Home() {
@@ -75,11 +76,14 @@ function Home() {
 
   
   return (
-    // <Router>  
-    //     <Navbar />
-    // </Router>
+  
     <>
-  <Signup register={registerHandler}/>
+ 
+    <Router>  
+        <Navbar login={loginHandler} register={registerHandler}/>
+    </Router>  
+      
+
     
     </>
   )

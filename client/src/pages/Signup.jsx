@@ -23,7 +23,7 @@ function Signup(props) {
   return (
     <div className='outer-outer-div'>
     <div className='outer-div'>
-        <h1>Sign In</h1>
+        <h1>Sign Up</h1>
     <div className='signup'>
         <form action="">
 

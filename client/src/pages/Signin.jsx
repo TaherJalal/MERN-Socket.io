@@ -1,6 +1,21 @@
-import React from 'react'
+import React , {useState} from 'react'
+import image from '../images/055.png'
 
-function Signin() {
+function Signin(props) {
+
+    const [newUser, setNewUser] = useState({});
+
+    const changeHandler = (e) => {
+        const user = {...newUser};
+        user[e.target.name] = e.target.value;
+        console.log(user);
+        setNewUser(user);
+    }
+
+    const loginHandler = () => {
+        props.login(newUser)
+    }
+
   return (
     <div className='outer-outer-div'>
     <div className='outer-div'>
@@ -10,19 +25,19 @@ function Signin() {
           
             <div>
                 <label>Email Address</label>
-                <input type="text" name="emailAddress" id="" />
+                <input type="text" name="emailAddress" onChange={changeHandler}/>
             </div>
 
             <div>
                 <label>Password</label>
-                <input type="text" name="password" id="" />
+                <input type="text" name="password" onChange={changeHandler} />
             </div>
 
             
         </form>
-    </div><button type="submit">Login</button>
+    </div><button type="submit" onClick={loginHandler}>Login</button>
     </div>
-    <img src="/src/images/055.png" alt="" />
+    <img src={image} alt="" />
     </div>
   )
 }

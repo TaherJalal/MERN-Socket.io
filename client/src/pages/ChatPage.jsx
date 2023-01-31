@@ -19,12 +19,15 @@ function ChatPage() {
   
   return (
     <>
+    <div className='chat-out'>
      <h3>Join Chat</h3>
     <label>user name</label>
     <input type="text"  onChange={(e) => setUserName(e.target.value)}/>
     <label>room</label>
     <input type="text" onChange={(e) => setRoom(e.target.value)}/>
     <button type="submit" onClick={joinRoom}>Join Room</button>
+    </div>
+    
     <br />
     <Chat socket={socket} username={userName} room={room}/> 
     </>

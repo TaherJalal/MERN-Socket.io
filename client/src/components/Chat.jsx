@@ -50,11 +50,9 @@ function Chat({socket , room , userName}) {
     console.log(messageList)
 
   return (
-    <div>
-        <h1>chat</h1>
-        <div className='chat-top'>
-            <p>Live Chat</p>
-        </div>
+    <div className='chat'>
+        <h1>Live Chat</h1>
+        
 
         <div className='chat-mid'>
 
