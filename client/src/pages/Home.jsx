@@ -25,15 +25,15 @@ function Home() {
     //     <Navbar />
     // </Router>
     <>
-    {/* <h3>Join Chat</h3>
+     <h3>Join Chat</h3>
     <label>user name</label>
     <input type="text"  onChange={(e) => setUserName(e.target.value)}/>
     <label>room</label>
     <input type="text" onChange={(e) => setRoom(e.target.value)}/>
     <button type="submit" onClick={joinRoom}>Join Room</button>
     <br />
-    <Chat socket={socket} username={userName} room={room}/> */}
-    <Signup />
+    <Chat socket={socket} username={userName} room={room}/> 
+    
     </>
   )
 }

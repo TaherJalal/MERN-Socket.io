@@ -1,10 +1,11 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import axios from 'axios'
 
 function Chat({socket , room , userName}) {
 
-    const [message , setMessage] = useState('')
+    const [message , setMessage] = useState({})
     const [messageList , setMessageList] = useState([])
     
     const sendMessage = async () => {
@@ -17,8 +18,27 @@ function Chat({socket , room , userName}) {
 
             await socket.emit('send-message' , messageData)
             setMessageList((list) => [...list , messageData])
+            console.log(message)
+                axios.post('/chat' , message)
+                .then((res) => {
+                    console.log(res)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
         }
     }
+
+    const handleChange = (event) => {
+        const attributeToChange = event.target.name
+        const newValue = event.target.value
+
+        const newMsg = {...message}
+        newMsg[attributeToChange] = newValue
+        console.log(newMsg)
+        setMessage(newMsg)
+    }
+ 
 
     useEffect(() => {
         socket.on('recieve-message' , (data) => {
@@ -36,15 +56,11 @@ function Chat({socket , room , userName}) {
         <div className='chat-mid'>
             {messageList.map((messageContent) => {
                 return (
-                <div className='message' id={userName == messageContent.user ? 'you' : 'other'}> 
+                <div className='message'> 
                 
                     <div> 
 
                         <div className='message-content'><p>{messageContent.currentMessage}</p></div>
-                        <div className='message-meta'>
-                            <p>{messageContent.user}</p>
-                        </div>
-
                     </div>
 
                 </div>
@@ -53,7 +69,7 @@ function Chat({socket , room , userName}) {
         </div>
 
         <div className='chat-bottom'>
-            <input type="text" onChange={(e) => setMessage(e.target.value)}/>
+            <input type="text" name='message' onChange={handleChange}/>
             <button type="submit" onClick={sendMessage}>send</button>
         </div>
     </div>

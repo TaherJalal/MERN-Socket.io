@@ -5,15 +5,14 @@ import axios from 'axios'
 function Signup() {
     const [firstName , setFirstName] = useState('')
     const [lastName , setLastName] = useState('')
-    const [email ,setEmail] = useState('')
+    const [emailAddress ,setEmailAddress] = useState('')
     const [password , setPassword] = useState('')
 
     const postData = (e) => {
-        e.preventDefault()
         axios.post('/signup' , {
             firstName,
             lastName,
-            email,
+            emailAddress,
             password
         })
         .then((res) => {
@@ -43,7 +42,7 @@ function Signup() {
 
             <div>
                 <label>Email Address</label>
-                <input type="text" onChange={(e) => setEmail(e.target.value)}/>
+                <input type="text" name="emailAddress" onChange={(e) => setEmailAddress(e.target.value)}/>
             </div>
 
             <div>
