@@ -14,11 +14,11 @@ module.exports = (req, res, next) => {
     }
 
     if(!token){
-        return res.status(401).json({"Protected"})
+        return res.status(401).json({"Message" :"Protected"})
     }
 
     try{
-        const decoded = jwt.verify(token, process.env.SECRET);
+        const decoded = jwt.verify(token, "SECRET");
         req.user = decoded.user;
         next();
     } catch (error) {

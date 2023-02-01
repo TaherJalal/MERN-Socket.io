@@ -5,6 +5,7 @@ const authCntrl = require('../controller/auth')
 
 router.use(express.json());
 
+
 router.get('/auth/signup' , authCntrl.auth_signup_get)
 router.post('/auth/auth/signup'  , authCntrl.auth_signup_post)
 

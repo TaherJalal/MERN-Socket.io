@@ -22,7 +22,7 @@ function ChatPage(props) {
     <div className='chat-out'>
      <h3>Join Chat</h3>
     <label>user name</label>
-    <input type="text"  onChange={(e) => setUserName(e.target.value)}/>
+    <input type="text"  onChange={(e) => setUserName(e.target.value)} value={props.username}/>
     <label>room</label>
     <input type="text" onChange={(e) => setRoom(e.target.value)}/>
     <button type="submit" onClick={joinRoom}>Join Room</button>

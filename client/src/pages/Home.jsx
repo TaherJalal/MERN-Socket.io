@@ -78,7 +78,7 @@ function Home() {
    
     <Router>  
         <Navbar login={loginHandler} registerHandler={registerHandler} signout={onLogoutHandler} 
-        username={  user.user ?  user.user.name : "null"} userId ={ user.user ?  user.user.id : "+"}/>
+        username={  user.user ?  user.user.name : "null"} userId ={ user.user ?  user.user.id : "+"} isAuth={isAuth}/>
     </Router>  
       
 
