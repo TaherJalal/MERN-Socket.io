@@ -1,12 +1,15 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { useRef } from 'react'
 import axios from 'axios'
 
 function Chat({socket , room , userName }) {
 
     const [message , setMessage] = useState({})
     const [messageList , setMessageList] = useState([])
+
+    const inputField = useRef()
 
     const sendMessage = async () => {
         if(message !== ""){
@@ -22,6 +25,7 @@ function Chat({socket , room , userName }) {
                 axios.post('/chat' , message)
                 .then((res) => {
                     console.log(res)
+                    inputField.current.value = ""
                 })
                 .catch((err) => {
                     console.log(err)
@@ -37,6 +41,7 @@ function Chat({socket , room , userName }) {
         newMsg[attributeToChange] = newValue
         console.log(newMsg)
         setMessage(newMsg)
+        
     }
  
 
@@ -72,7 +77,7 @@ function Chat({socket , room , userName }) {
         </div>
 
         <div className='chat-bottom'>
-            <input type="text" name='message' onChange={handleChange}/>
+            <input type="text" name='message' onChange={handleChange} ref={inputField}/>
             <button type="submit" onClick={sendMessage}>send</button>
         </div>
     </div>
