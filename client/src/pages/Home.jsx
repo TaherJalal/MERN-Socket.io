@@ -4,12 +4,8 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import socketIO from 'socket.io-client'
-import Chat from '../components/Chat'
-import Signup from './Signup'
-import ChatPage from './ChatPage'
 import jwt_decode from 'jwt-decode'
-import Signin from './Signin'
-import User from '../pages/User'
+
 const socket = socketIO.connect('http://localhost:8000')
 
 function Home() {
@@ -74,13 +70,15 @@ function Home() {
     setMessage("User logged out successfully")
   }
 
-  
+  console.log("user is ????",user)
+
   return (
   
     <>
- 
+   
     <Router>  
-        <Navbar login={loginHandler} registerHandler={registerHandler} signout={onLogoutHandler}/>
+        <Navbar login={loginHandler} registerHandler={registerHandler} signout={onLogoutHandler} 
+        username={  user.user ?  user.user.name : "null"} userId ={ user.user ?  user.user.id : "+"}/>
     </Router>  
       
 

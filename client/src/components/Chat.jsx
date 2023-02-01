@@ -3,17 +3,18 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 
-function Chat({socket , room , userName}) {
+function Chat({socket , room , userName , userId}) {
 
     const [message , setMessage] = useState({})
     const [messageList , setMessageList] = useState([])
-    
+
     const sendMessage = async () => {
         if(message !== ""){
             const messageData ={
                 room: room,
                 user: userName,
-                currentMessage: message
+                currentMessage: message,
+                userId: userId
             }
 
             await socket.emit('send-message' , messageData)

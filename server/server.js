@@ -11,10 +11,12 @@ app.use(express.json())
 const indexRoutes = require('./routes/index')
 const authRoutes = require('./routes/auth')
 const chatRoutes = require('./routes/chat')
+const userRoutes = require('./routes/user')
 
 app.use(indexRoutes)
 app.use("/",authRoutes)
 app.use(chatRoutes)
+app.use(userRoutes)
 
 
 const socketIO = require('socket.io')(http, {

@@ -1,51 +1,62 @@
-import React , {useState} from 'react'
+import React , {useState , useEffect} from 'react'
+
+import axios from 'axios'
 import image from '../images/186.png'
+
+
 
 function User(props) {
 
-    const [author, setAuthor] = useState(props.author);
+    const [firstName , setFirstName] = useState("")
+    const [lastName , setLastName] = useState("")
+    
 
-    const handleChange = (event) => {
-        const attributeToChange = event.target.name
-        const newValue = event.target.value
-
-        const updatedAuthor = {...author}
-        updatedAuthor[attributeToChange] = newValue
-        console.log(updatedAuthor)
-        setAuthor(updatedAuthor)
+    
+const updateData = (e) => {
+    e.preventDefault()
+        axios.put(`/user?id=${props.userId}`,{
+        firstName , lastName })
+        .then((res) => {
+            res.json({res})
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
+    useEffect(() => {
+        // console.log(props.userId)
+        axios.get(`/user?id=${props.userId}`)
+        .then((res) => {
+            console.log(res)
+            setFirstName(res.data.user.firstName)
+            setLastName(res.data.user.lastName)
+            // res.json({res.user})
+        })
+    }, [props.userId])
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        props.editAuthor(author);
-        event.target.reset();
-    }
+    
 
+ 
   return (
     <div className='outer-outer-div'>
     <div className='outer-div'>
         <h1>User Details</h1>
     <div className='signup'>
-        <form action="">
+        <form>
 
             <div>
                 <label>First Name</label>
-                <input type="text" name="firstName" />
+                <input type="text" name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+               
             </div>
           
             <div>
                 <label>Last Name</label>
-                <input type="text" name="lastName" />
+                <input type="text" name="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
             </div>
-
-            <div>
-                <label>Email Address</label>
-                <input type="text" name="emailAddress"/>
-            </div>
-
             
         </form>
-    </div><button type="submit">Edit</button>
+    </div><button type="submit" onClick={updateData}>Edit</button>
     </div>
     <img src={image} alt="" />
     </div>

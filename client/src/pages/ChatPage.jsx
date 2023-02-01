@@ -6,7 +6,7 @@ import Chat from '../components/Chat'
 
 const socket = socketIO.connect('http://localhost:8000')
 
-function ChatPage() {
+function ChatPage(props) {
 
   const  [userName , setUserName] = useState('')
   const [room , setRoom] = useState('')
@@ -29,7 +29,7 @@ function ChatPage() {
     </div>
     
     <br />
-    <Chat socket={socket} username={userName} room={room}/> 
+    <Chat socket={socket} username={userName} room={room} userId={props.userId}/> 
     </>
   )
 }
