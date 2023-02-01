@@ -13,7 +13,7 @@ function Navbar(props) {
     <div className='outer'>
     <div className='nav'>
             {props.isAuth ? (
-              <div>
+              <div className='inner-nav'>
             <Link to='/'>Home</Link>
             <Link to='/about'>About Us</Link>
             <Link to='/chat'>Chat</Link>

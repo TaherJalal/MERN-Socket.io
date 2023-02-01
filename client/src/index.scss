@@ -8,6 +8,13 @@
     text-decoration: none;
     color: rgb(255, 255, 255);
     // text-align: center;
+
+    input{
+        color: black;
+    }
+    button{
+        color: black;
+    }
 }
 
 :root {
@@ -15,13 +22,13 @@
 }
 
 .nav{
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-  padding-top: 2vh;
-  padding-right:3vh;
-  font-weight: 400;
-
+    .inner-nav{
+        display: flex;
+        gap: 1vw;
+        justify-content: flex-end;
+        margin-top: 2vh;
+        margin-right: 2vw;
+    }
 }
 
 .heading{
@@ -189,10 +196,18 @@
     display: flex;
   }
  
+  .chat-bottom{
+    position: relative;
+    bottom: -30vh;
+  }
 
 }
 
 .outer{
   display: flex;
   flex-direction: column;
+}
+
+.about{
+    padding: 10px;
 }

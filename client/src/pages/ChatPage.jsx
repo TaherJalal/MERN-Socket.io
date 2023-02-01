@@ -19,6 +19,7 @@ function ChatPage(props) {
   return (
     <>
     <div className='chat-out'>
+      <div>
      <h3>Join Chat</h3>
     <label>user name</label>
     <input type="text"  onChange={(e) => setUserName(e.target.value)} value={props.username}/>
@@ -26,7 +27,7 @@ function ChatPage(props) {
     <input type="text" onChange={(e) => setRoom(e.target.value)}/>
     <button type="submit" onClick={joinRoom}>Join Room</button>
     </div>
-    
+    </div>
     <br />
     <Chat socket={socket} username={userName} room={room} userId={props.userId}/> 
     </>
