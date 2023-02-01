@@ -11,10 +11,9 @@ function ChatPage(props) {
   const  [userName , setUserName] = useState('')
   const [room , setRoom] = useState('')
 
-  const joinRoom = () => {
-    if(userName !==  "" && room !== ""){
+  const joinRoom = (data) => {
+    console.log(data)
       socket.emit('join-room' , room)
-    }
   }
   
   return (

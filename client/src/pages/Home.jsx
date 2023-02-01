@@ -35,6 +35,7 @@ function Home() {
     axios.post("auth/signup", user)
     .then(res => {
       console.log(res);
+      window.location.href="/auth/signin"
     })
     .catch(err => {
       console.log(err)
