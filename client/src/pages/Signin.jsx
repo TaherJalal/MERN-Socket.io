@@ -30,7 +30,7 @@ export default function Signin(props) {
 
             <div>
                 <label>Password</label>
-                <input type="text" name="password" onChange={changeHandler} />
+                <input type="password" name="password" onChange={changeHandler} />
             </div>
 
             

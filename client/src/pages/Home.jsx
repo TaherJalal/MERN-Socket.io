@@ -53,7 +53,7 @@ function Home() {
         let user = jwt_decode(token);
         setIsAuth(true);
         setUser(user);
-        setMessage("User logged In successfully!")
+        window.location.href="/"
       }
 
     })
@@ -67,7 +67,7 @@ function Home() {
     localStorage.removeItem("token");
     setIsAuth(false);
     setUser(null);
-    setMessage("User logged out successfully")
+    window.location.href="/"
   }
 
   console.log("user is ????",user)
