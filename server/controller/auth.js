@@ -74,10 +74,10 @@ exports.auth_signin_post = async (req, res) => {
         name: user.firstName
       },
     };
-
+// console.log(process.env.SECRET)
     jwt.sign(
       payload,
-      process.env.SECRET,
+      "SECRET",
       { expiresIn: 36000000 },
       (err, token) => {
         if (err) throw err;

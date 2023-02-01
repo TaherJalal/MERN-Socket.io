@@ -80,7 +80,7 @@ function Home() {
     <>
  
     <Router>  
-        <Navbar login={loginHandler} register={registerHandler}/>
+        <Navbar login={loginHandler} registerHandler={registerHandler} signout={onLogoutHandler}/>
     </Router>  
       
 

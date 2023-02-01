@@ -4,7 +4,8 @@ import axios from 'axios'
 import image from '../images/176.png'
 
 
-function Signup(props) {
+export default function Signup(props) {
+    console.log(props)
  const jwt_decode = require('jwt-decode')
     const [newUser, setNewUser] = useState({});
 
@@ -56,4 +57,4 @@ function Signup(props) {
   )
 }
 
-export default Signup
+

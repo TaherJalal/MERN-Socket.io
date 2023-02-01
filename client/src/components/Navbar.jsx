@@ -10,6 +10,7 @@ import Index from './Index'
 
 function Navbar(props) {
   return (
+    <div className='outer'>
     <div className='nav'>
 
             <Link to='/'>Home</Link>
@@ -18,13 +19,13 @@ function Navbar(props) {
             <Link to='/about'>About Us</Link>
             <Link to='/chat'>Chat</Link>
             <Link to='/user'>My Account</Link>
-            <Link to='/logout'>Logout</Link>
+            <Link to='/auth/logout' onClick={props.signout}>Logout</Link>
 
 
             <Routes>
 
             <Route path='/' element={<Index />}></Route>
-            <Route path='/auth/signin' element={<Signin login={props.loginHandler}/>}></Route>
+            <Route path='/auth/signin' element={<Signin login={props.login}/>}></Route>
             <Route path='/auth/signup' element={<Signup register={props.registerHandler}/>}></Route>
             <Route path="/about" element={<AboutUs />}></Route>
             <Route path="/Chat" element={<ChatPage />}></Route>
@@ -33,7 +34,7 @@ function Navbar(props) {
             </Routes>
 
     </div>
-
+    </div>
   )
 }
 

@@ -1,8 +1,8 @@
 import React , {useState} from 'react'
 import image from '../images/055.png'
 
-function Signin(props) {
-
+export default function Signin(props) {
+    console.log(props)
     const [newUser, setNewUser] = useState({});
 
     const changeHandler = (e) => {
@@ -42,4 +42,3 @@ function Signin(props) {
   )
 }
 
-export default Signin
