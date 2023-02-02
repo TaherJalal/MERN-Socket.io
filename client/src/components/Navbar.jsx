@@ -20,7 +20,7 @@ function Navbar(props) {
             <Link to={`/user?id=${props.userId}`}> My Account </Link>
             <Link to='/auth/logout' onClick={props.signout}>Logout</Link>
             </div>
-):(<div>
+):(<div className='inner-nav'>
             <Link to='/'>Home</Link>
             <Link to='/auth/signin'>Login</Link>
             <Link to='/auth/signup'>Sign Up</Link>

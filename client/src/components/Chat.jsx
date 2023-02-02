@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRef } from 'react'
 import axios from 'axios'
 
-function Chat({socket , room , userName }) {
+function Chat({socket , room , userName, userId }) {
 
     const [message , setMessage] = useState({})
     const [messageList , setMessageList] = useState([])
@@ -22,7 +22,7 @@ function Chat({socket , room , userName }) {
             await socket.emit('send-message' , messageData)
             setMessageList((list) => [...list , messageData])
             console.log(message)
-                axios.post('/chat' , message)
+                axios.post('/chat' ,message )
                 .then((res) => {
                     console.log(res)
                     inputField.current.value = ""
